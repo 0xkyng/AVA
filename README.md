@@ -1,62 +1,103 @@
-# DegenToken Smart Contract
+# User Registry Smart Contract
 
-## Overview
+## Introduction
 
-`DegenToken` is an ERC-20 token named "Degen" with the symbol "DGN" deployed on the Avalanche Fuji Testnet. This token allows the owner to mint new tokens, create items associated with unique IDs, burn tokens, and redeem items. The contract is built on the Ethereum blockchain using OpenZeppelin's ERC-20 implementation.
+The User Registry Smart Contract is a Solidity contract designed to implement and showcase the usage of `require()`, `assert()`, and `revert()` statements. It manages user registrations on the Ethereum blockchain, providing a simple and secure way to register, deregister, and check the registration status of users.
 
-## Contract Details
+## Features
 
-### Token Information
+- **User Registration**: Allows users to register by adding their Ethereum address to the registry.
+- **Deregistration**: Provides a mechanism for users to deregister if needed.
+- **Registration Status Check**: Allows anyone to check whether a specific Ethereum address is registered.
 
-- **Name:** Degen
-- **Symbol:** DGN
+## Smart Contract Details
 
-### Functions
+- **Solidity Version**: 0.8.8
+- **License**: MIT (See [LICENSE](./LICENSE))
 
-1. **Constructor:**
+## Smart Contract Functions
 
-   - Initializes the ERC-20 token with the specified name and symbol.
-   - Sets the contract deployer as the owner.
+### `registerUser(address user)`
 
-2. **mint(address to, uint256 amount):**
+Registers a user by adding their Ethereum address to the registry.
 
-   - Mints new tokens and assigns them to the specified address.
-   - Only the contract owner can call this function.
+**Parameters:**
+- `user` (address): Ethereum address of the user.
 
-3. **createItems(string memory \_name, uint256 amount):**
+**Note:** This function uses the `require()` statement to ensure that a user cannot be registered more than once.
 
-   - Creates items associated with unique IDs.
-   - Only the contract owner can call this function.
+### `deregisterUser(address user)`
 
-4. **burn(uint amount):**
+Deregisters a user by removing their Ethereum address from the registry.
 
-   - Burns a specified amount of tokens from the caller's balance.
-   - Ensures that the caller has a sufficient balance to burn.
+**Parameters:**
+- `user` (address): Ethereum address of the user.
 
-5. **redeem(uint8 itemID\_):**
+**Note:** This function uses the `require()` statement to ensure that only registered users can be deregistered. It also uses `revert()` to provide a specific error message if the user is not registered.
 
-   - Redeems items associated with a given item ID.
-   - Transfers the ownership of the item to the caller.
+### `isRegistered(address user)`
 
-6. **viewItemOwner(uint8 itemID\_):**
+Checks if a user is registered.
 
-   - Returns the current owner of the item associated with the given item ID.
+**Parameters:**
+- `user` (address): Ethereum address of the user.
 
-7. **showItem(uint id\_):**
-   - Returns detailed information about the item associated with the given ID.
+**Returns:**
+- `true` if the user is registered.
+- `false` if the user is not registered.
 
-## Deployment
-
-The contract is deployed on the Avalanche Fuji Testnet at the following address: [DegenToken Contract](https://testnet.snowtrace.io/address/0x3330Ec15317EB7f4Dc50C807C269B1d2e568E87d).
-
-## Interacting with the Contract
-
-- The contract owner can mint new tokens and create items using the respective functions.
-- Any address with a balance can burn their tokens.
-- Items can be redeemed by calling the `redeem` function, and their ownership can be viewed using the `viewItemOwner` function.
-- Detailed information about items can be obtained using the `showItem` function.
-
-## Disclaimer
+**Note:** This function uses the `assert()` statement to ensure that the registration status check is accurate.
 
 
-This contract is provided under the MIT License. Use it at your own risk. Be sure to review and test the contract thoroughly before deploying it in a production environment.
+# User Registry Smart Contract
+
+## Introduction
+
+The User Registry Smart Contract is a Solidity contract designed to implement and showcase the usage of `require()`, `assert()`, and `revert()` statements. It manages user registrations on the Ethereum blockchain, providing a simple and secure way to register, deregister, and check the registration status of users.
+
+## Features
+
+- **User Registration**: Allows users to register by adding their Ethereum address to the registry.
+- **Deregistration**: Provides a mechanism for users to deregister if needed.
+- **Registration Status Check**: Allows anyone to check whether a specific Ethereum address is registered.
+
+## Smart Contract Details
+
+- **Solidity Version**: 0.8.8
+- **License**: MIT (See [LICENSE](./LICENSE))
+
+## Smart Contract Functions
+
+### `registerUser(address user)`
+
+Registers a user by adding their Ethereum address to the registry.
+
+**Parameters:**
+- `user` (address): Ethereum address of the user.
+
+**Note:** This function uses the `require()` statement to ensure that a user cannot be registered more than once.
+
+### `deregisterUser(address user)`
+
+Deregisters a user by removing their Ethereum address from the registry.
+
+**Parameters:**
+- `user` (address): Ethereum address of the user.
+
+**Note:** This function uses the `require()` statement to ensure that only registered users can be deregistered. It also uses `revert()` to provide a specific error message if the user is not registered.
+
+### `isRegistered(address user)`
+
+Checks if a user is registered.
+
+**Parameters:**
+- `user` (address): Ethereum address of the user.
+
+**Returns:**
+- `true` if the user is registered.
+- `false` if the user is not registered.
+
+**Note:** This function uses the `assert()` statement to ensure that the registration status check is accurate.
+
+
+vv
