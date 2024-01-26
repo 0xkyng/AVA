@@ -98,6 +98,3 @@ Checks if a user is registered.
 - `false` if the user is not registered.
 
 **Note:** This function uses the `assert()` statement to ensure that the registration status check is accurate.
-
-
-vv
